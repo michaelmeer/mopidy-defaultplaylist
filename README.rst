@@ -14,7 +14,7 @@ Mopidy-DefaultPlaylist
     :target: https://codecov.io/gh/michaelmeer/mopidy-defaultplaylist
     :alt: Test coverage
 
-Sets a default playlist for Mopidy
+Sets a default playlist for Mopidy, and allows to start playing it automatically after start of the Mopidy service. Optionally allows to set shuffle mode on. This can be useful for projects like the `Pimoroni Pirate Radio <https://learn.pimoroni.com/tutorial/sandyj/streaming-spotify-to-your-pi/>`_.
 
 
 Installation
@@ -34,7 +34,12 @@ Before starting Mopidy, you must add configuration for
 Mopidy-DefaultPlaylist to your Mopidy configuration file::
 
     [defaultplaylist]
-    # TODO: Add example of extension config
+    enabled = true
+    defaultplaylist_name = Top Hits
+    autoplay = true
+    shuffle = true
+
+The default
 
 
 Project resources
