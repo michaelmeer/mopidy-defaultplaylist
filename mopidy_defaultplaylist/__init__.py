@@ -25,6 +25,7 @@ class Extension(ext.Extension):
         schema["defaultplaylist_name"] = config.String()
         schema["autoplay"] = config.Boolean()
         schema["shuffle"] = config.Boolean()
+        schema["repeat"] = config.Boolean()
 
         return schema
 

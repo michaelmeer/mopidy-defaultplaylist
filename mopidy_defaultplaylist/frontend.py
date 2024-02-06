@@ -14,6 +14,7 @@ class DefaultPlaylistFrontend(pykka.ThreadingActor, core.CoreListener):
         self.defaultplaylist_name = self.config["defaultplaylist_name"]
         self.autoplay = self.config["autoplay"]
         self.shuffle = self.config["shuffle"]
+        self.repeat = self.config["repeat"]
 
     # Your frontend implementation
     def on_start(self):
@@ -30,17 +31,18 @@ class DefaultPlaylistFrontend(pykka.ThreadingActor, core.CoreListener):
             logger.info("Tracks: {0}".format(track_uris))
             self.core.tracklist.add(uris=track_uris)
             self.core.tracklist.set_random(self.shuffle)
+            self.core.tracklist.set_repeat(self.repeat)
             if self.autoplay:
                 logger.info(
-                    "Loaded Playlist {}, autoplay on --> start playing tracklist, shuffle-mode {}".format(
-                        self.defaultplaylist_name, self.shuffle
+                    "Loaded Playlist {}, autoplay on --> start playing tracklist, shuffle-mode {}, repeat-mode {}".format(
+                        self.defaultplaylist_name, self.shuffle, self.repeat,
                     )
                 )
                 self.core.playback.play()
             else:
                 logger.info(
-                    "Loaded Playlist {}, shuffle-mode {}".format(
-                        self.defaultplaylist_name, self.shuffle
+                    "Loaded Playlist {}, shuffle-mode {}, repeat-mode {}".format(
+                        self.defaultplaylist_name, self.shuffle, self.repeat,
                     )
                 )
         else:
