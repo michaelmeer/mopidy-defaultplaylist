@@ -34,14 +34,14 @@ class DefaultPlaylistFrontend(pykka.ThreadingActor, core.CoreListener):
             self.core.tracklist.set_repeat(self.repeat)
             if self.autoplay:
                 logger.info(
-                    "Loaded Playlist {}, autoplay on --> start playing tracklist, shuffle-mode {}".format(
+                    "Loaded Playlist {}, autoplay on --> start playing tracklist, shuffle-mode {}, repeat-mode {}".format(
                         self.defaultplaylist_name, self.shuffle, self.repeat,
                     )
                 )
                 self.core.playback.play()
             else:
                 logger.info(
-                    "Loaded Playlist {}, shuffle-mode {}".format(
+                    "Loaded Playlist {}, shuffle-mode {}, repeat-mode {}".format(
                         self.defaultplaylist_name, self.shuffle, self.repeat,
                     )
                 )
